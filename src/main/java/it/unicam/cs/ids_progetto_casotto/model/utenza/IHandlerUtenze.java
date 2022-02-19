@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Interfaccia che permette ad un gestore Utenze di gestire le utenze
  */
-public interface IHandlerUtenze {
+public class IHandlerUtenze {
 
     /**
      * Metodo che permette di aggiungere un'utenza al Casotto
@@ -17,7 +17,9 @@ public interface IHandlerUtenze {
      * @param numeroPostiOccupabili numero delle persone che posso occupare l'utenza
      * @return true o false se l'operazione ha avuto successo
      */
-    boolean aggiungiUtenza(IControllerGestoreSpiaggia controllerSpiaggia, int id, int numeroPostiOccupabili);
+    public boolean aggiungiUtenza(IControllerGestoreSpiaggia controllerSpiaggia, int id, int numeroPostiOccupabili){
+        return false;
+    }
 
     /**
      * Metodo che permette di eliminare un'utenza dal Casotto
@@ -25,13 +27,17 @@ public interface IHandlerUtenze {
      * @param utenza l'utenza da eliminare
      * @return true o false se l'operazione ha avuto successo
      */
-    boolean eliminaUtenza(IControllerGestoreSpiaggia controllerSpiaggia, Utenza utenza);
+   public boolean eliminaUtenza(IControllerGestoreSpiaggia controllerSpiaggia, Utenza utenza){
+       return controllerSpiaggia.eliminaUtenza(utenza);
+   }
 
     /**
      * Metodo che restituisce una lista di Utenze del Casotto
      * @param controllerSpiaggia le utenze del casotto
      * @return la lista di Utenze del Casotto
      */
-    List<Utenza> getUtenze(IControllerGestoreSpiaggia controllerSpiaggia);
+  public List<Utenza> getUtenze(IControllerGestoreSpiaggia controllerSpiaggia){
+      return controllerSpiaggia.getUtenze();
+  }
 
 }

@@ -1,20 +1,36 @@
 package it.unicam.cs.ids_progetto_casotto.model.utenza;
 
 import it.unicam.cs.ids_progetto_casotto.controller.controller_utenza.IControllerClienteSpiaggia;
+import it.unicam.cs.ids_progetto_casotto.model.attivita.PrenotazioneAttivita;
+import it.unicam.cs.ids_progetto_casotto.model.newsletter.Messaggio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *Interfaccia che definisce azioni che un utente puo&grave; effettuare per quanto riguarda le utenze.
  */
-public interface IClienteUtenza {
+public class IClienteUtenza {
+
+    private final List<PrenotazioneUtenza> utenzePrenotate;
+    private final List<PrenotazioneAttivita> attivitaPrenotate;
+    private final List<Messaggio> listaMessaggi;
+
+    public IClienteUtenza(List<PrenotazioneUtenza> utenzePrenotate, List<PrenotazioneAttivita> attivitaPrenotate, List<Messaggio> listaMessaggi) {
+        this.utenzePrenotate = new ArrayList<>();
+        this.attivitaPrenotate = new ArrayList<>();
+        this.listaMessaggi = new ArrayList<>();
+    }
+
     /**
      * metodo che permette di visualizzare le utenze disponibili del Casotto in un determinato periodo
      * @param controllerSpiaggia restituisce tutte le utenze del casotto
      * @param periodi il periodo selezionato dall'utente
      * @return la lista delle utenze disponibili
      */
-    List<Utenza>visualizzaUtenze(IControllerClienteSpiaggia controllerSpiaggia, Periodo periodi);
+   public List<Utenza>visualizzaUtenze(IControllerClienteSpiaggia controllerSpiaggia, Periodo periodi){
+       return null;
+   }
 
     /**
      * Metodo che permette di visualizzare le
@@ -27,7 +43,9 @@ public interface IClienteUtenza {
      * @return lsita di utenze corrispondenti al periodo e alla
      * fascia oraria selezionati
      */
-    List<Utenza> visualizzaUtenze(IControllerClienteSpiaggia controllerSpiaggia, Periodo periodo, FasciaOraria fasciaOraria);
+   public List<Utenza> visualizzaUtenze(IControllerClienteSpiaggia controllerSpiaggia, Periodo periodo, FasciaOraria fasciaOraria){
+       return null;
+   }
 
     /**
      * metodo che permette di far selezionare un'utenza da prenotare al cliente
@@ -36,7 +54,9 @@ public interface IClienteUtenza {
      * @param utenza l'utenza da selezionare
      * @return true o false se l'utenza è stata scelta o meno
      */
-    boolean selezionaUtenzadaPrenotare(IControllerClienteSpiaggia controllerSpiaggia, Utenza utenza);
+    public boolean selezionaUtenzadaPrenotare(IControllerClienteSpiaggia controllerSpiaggia, Utenza utenza){
+        return false;
+    }
 
     /**
      * Metodo che permette di selezionare
@@ -47,27 +67,35 @@ public interface IClienteUtenza {
      * @param tariffa tariffa da selezionare
      * @return tariffa selezionata
      */
-    Tariffa selezionaTariffa(IControllerClienteSpiaggia controllerSpiaggia, Tariffa tariffa);
+   public Tariffa selezionaTariffa(IControllerClienteSpiaggia controllerSpiaggia, Tariffa tariffa){
+       return null;
+   }
 
     /**
      * metodo che restituisce le utenze prenotate dal cliente
      * @return le utenze prenotate dall'utente
      */
-    List<PrenotazioneUtenza> getPrenotazioniUtenze();
+  public List<PrenotazioneUtenza> getPrenotazioniUtenze(){
+      return null;
+  }
 
     /**
      * restituisce un'utenza selezionata dal cliente
-     * @param utenza
+     *
      * @return un'utenza selezionata da un'utente
      */
-    PrenotazioneUtenza selezionaPrenotazioneUtenza(PrenotazioneUtenza prenotazione);
+   public PrenotazioneUtenza selezionaPrenotazioneUtenza(PrenotazioneUtenza prenotazione){
+       return null;
+   }
 
     /**
      * metodo che permette al cliente di cancellare una prenotazione effettuata
      * @param controllerSpiaggia restituisce  le utenze prenotate del cliente
      * @param utenza l'utenza selezionata da cancellare
      */
-    void eliminaPrenotazioneUtenza(IControllerClienteSpiaggia controllerSpiaggia, PrenotazioneUtenza utenza);
+    void eliminaPrenotazioneUtenza(IControllerClienteSpiaggia controllerSpiaggia, PrenotazioneUtenza utenza){
+
+    }
 
 
 }

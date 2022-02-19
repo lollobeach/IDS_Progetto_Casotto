@@ -1,11 +1,6 @@
 package it.unicam.cs.ids_progetto_casotto.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
-public abstract class Persona implements IUtente{
 
     @Column
     @Id
@@ -30,7 +25,7 @@ public abstract class Persona implements IUtente{
         this.email = email;
     }
 
-    @Override
+  /*  @Override
     public int getId() {
         return this.id;
     }
@@ -67,4 +62,6 @@ public abstract class Persona implements IUtente{
     public void setEmail(String newEmail) {
         this.email = newEmail;
     }
+
+   */
 }

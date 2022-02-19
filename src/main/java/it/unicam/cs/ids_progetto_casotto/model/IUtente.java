@@ -4,7 +4,22 @@ package it.unicam.cs.ids_progetto_casotto.model;
  * Interfaccia che definisce un generico
  * utente del sistema
  */
-public interface IUtente {
+public class IUtente {
+    private int id;
+    private final String nome;
+    private final String cognome;
+    private final String annoNascita;
+    private final char sesso;
+    private String email;
+
+    public IUtente(int id, String nome, String cognome, String annoNascita, char sesso, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.annoNascita = annoNascita;
+        this.sesso = sesso;
+        this.email = email;
+    }
 
     /**
      * Metodo che ritorna
@@ -12,7 +27,9 @@ public interface IUtente {
      *
      * @return identificativo
      */
-    int getId();
+  public   int getId(){
+      return this.id;
+  }
 
     /**
      * Metodo che ritorna il nome
@@ -20,7 +37,9 @@ public interface IUtente {
      *
      * @return nome utente
      */
-    String getNomeUtente();
+  public   String getNomeUtente(){
+      return this.nome;
+  }
 
     /**
      * Metodo che ritora il cognome
@@ -28,7 +47,9 @@ public interface IUtente {
      *
      * @return cognome utente
      */
-    String getCognomeUtente();
+    public String getCognomeUtente(){
+        return this.cognome;
+    }
 
     /**
      * Metodo che ritorna l'anno
@@ -36,7 +57,9 @@ public interface IUtente {
      *
      * @return anno di nascita
      */
-    String getAnnoNascita();
+  public  String getAnnoNascita(){
+      return this.annoNascita;
+  }
 
     /**
      * Metodo che ritorna il sesso
@@ -44,7 +67,9 @@ public interface IUtente {
      *
      * @return sesso utente
      */
-    char getSesso();
+  public char getSesso(){
+      return this.sesso;
+  }
 
     /**
      * Metodo che ritorna l'e-mail
@@ -52,5 +77,7 @@ public interface IUtente {
      *
      * @return e-mail utente
      */
-    String getEmail();
+    public String getEmail(){
+        return this.email;
+    }
 }

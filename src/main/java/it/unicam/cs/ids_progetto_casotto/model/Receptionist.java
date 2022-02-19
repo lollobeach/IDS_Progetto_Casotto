@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * {@link PrenotazioneAttivitaCliente} e le
  * notifiche tramite {@link it.unicam.cs.ids_progetto_casotto.model.newsletter.IHandlerNewsletter}
  */
-public class Receptionist extends Persona implements IHandlerPrenotazioniAttivitaClienti, IHandlerPrenotazioniUtenzeClienti, IHandlerNewsletter {
+public class Receptionist extends Persona  {
 
     private final List<PrenotazioneUtenzaCliente> prenotazioniUtenzaClienti;
     private final List<PrenotazioneAttivitaCliente> prenotazioniAttivitaClienti;
@@ -29,7 +29,7 @@ public class Receptionist extends Persona implements IHandlerPrenotazioniAttivit
         this.prenotazioniAttivitaClienti = new ArrayList<>();
     }
 
-    @Override
+ /*   @Override
     public List<PrenotazioneAttivitaCliente> getPrenotazioniAttivitaClienti() {
         return this.prenotazioniAttivitaClienti;
     }
@@ -97,6 +97,8 @@ public class Receptionist extends Persona implements IHandlerPrenotazioniAttivit
     public boolean notificaAttivita(IControllerNotificheClienti newsletter, Attivita attivita) {
         return false;
     }
+
+  */
 
     //TODO sistemare i metodi di IHandlerNewsletter
 }

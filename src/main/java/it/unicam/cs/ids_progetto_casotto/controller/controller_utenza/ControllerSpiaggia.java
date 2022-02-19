@@ -1,6 +1,10 @@
 package it.unicam.cs.ids_progetto_casotto.controller.controller_utenza;
 
 import it.unicam.cs.ids_progetto_casotto.model.utenza.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -12,9 +16,11 @@ import java.util.List;
  * Classe che permette di gestire
  * le utenze
  */
-public class ControllerSpiaggia  implements IControllerGestoreSpiaggia,IControllerClienteSpiaggia {
+@RestController
+@RequestMapping("/catalogo")
+public class ControllerSpiaggia  {
 
-    private final List<Utenza>utenze;
+   /* private final List<Utenza>utenze;
     private final List<Tariffa> tariffe;
     private final HashMap<Periodo,List<Utenza>> listaUtenzeByPeriodo;
 
@@ -23,13 +29,19 @@ public class ControllerSpiaggia  implements IControllerGestoreSpiaggia,IControll
         this.tariffe = new ArrayList<>();
         this.listaUtenzeByPeriodo = new HashMap<>();
     }
+    */
+    @Autowired
+    private ServiceSpiaggia serviceSpiaggia;
 
-    @Override
+
+ @GetMapping("/utenze")
     public List<Utenza> getUtenze() {
-        return this.utenze;
+       // return this.utenze;
+     return serviceSpiaggia.getAll();
     }
 
     @Override
+    @GetMapping()
     public boolean aggiungiUtenza(Utenza utenza) {
         if (this.getUtenze().contains(utenza)) {
             System.out.println("L'utenza che si vuole aggiungere è già presente");
@@ -39,7 +51,7 @@ public class ControllerSpiaggia  implements IControllerGestoreSpiaggia,IControll
         this.utenze.add(utenza);
         return true;
     }
-
+/*
     @Override
     public boolean eliminaUtenza(Utenza utenza) {
         if (!this.getUtenze().contains(utenza)) {

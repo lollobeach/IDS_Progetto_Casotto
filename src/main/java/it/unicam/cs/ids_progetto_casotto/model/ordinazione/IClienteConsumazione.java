@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Interfaccia che permette l'interazione tra {@link Cliente} e {@link IControllerClienteOrdinazione}
  */
-public interface IClienteConsumazione {
+public class IClienteConsumazione {
 
     /**
      * Metodo che permette la visualizzazione del menu da parte del cliente
@@ -16,7 +16,9 @@ public interface IClienteConsumazione {
      * @param controllerOrdinazione il controller dalla quale si vuole visualizzare il men&ugrave;
      * @return la lista di consumazioni presenti nel controller
      */
-    List<Consumazione> visulizzaMenu(IControllerClienteOrdinazione controllerOrdinazione);
+   public List<Consumazione> visulizzaMenu(IControllerClienteOrdinazione controllerOrdinazione){
+       return null;
+   }
 
     /**
      * Metodo che permette la selezione delle consumazioni il quale {@link Cliente} vuole ordinare
@@ -24,5 +26,7 @@ public interface IClienteConsumazione {
      * @param controllerOrdinazione il controller dalla quale si vuole ordinare
      * @param consumazioni la lista di consumazioni desiderate dal cliente
      */
-    void selezionaConsumazioni(IControllerClienteOrdinazione controllerOrdinazione, List<Consumazione> consumazioni);
+    public void selezionaConsumazioni(IControllerClienteOrdinazione controllerOrdinazione, List<Consumazione> consumazioni){
+
+    }
 }

@@ -1,14 +1,27 @@
 package it.unicam.cs.ids_progetto_casotto.model.attivita;
 
 import it.unicam.cs.ids_progetto_casotto.controller.controller_attivita.IControllerClienteAttivita;
+import it.unicam.cs.ids_progetto_casotto.model.newsletter.Messaggio;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.PrenotazioneUtenza;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Interfaccia che permette al cliente di gestire le
  * varie attivit&agrave; proposte dal casotto
  */
-public interface IClienteAttività {
+public class IClienteAttività {
+
+    private final List<PrenotazioneUtenza> utenzePrenotate;
+    private final List<PrenotazioneAttivita> attivitaPrenotate;
+    private final List<Messaggio> listaMessaggi;
+
+    public IClienteAttività(List<PrenotazioneUtenza> utenzePrenotate, List<PrenotazioneAttivita> attivitaPrenotate, List<Messaggio> listaMessaggi) {
+        this.utenzePrenotate =new ArrayList<>();
+        this.attivitaPrenotate = new ArrayList<>();
+        this.listaMessaggi = new ArrayList<>();
+    }
 
     /**
      * Metodo che permette al cliente di visualizzare
@@ -19,7 +32,9 @@ public interface IClienteAttività {
      *                           di accedere alle attivit&agrave;
      * @return lista di attivit&agrave; visualizzate
      */
-    List<Attivita> visualizzaAttivita(IControllerClienteAttivita controllerAttivita);
+   public List<Attivita> visualizzaAttivita(IControllerClienteAttivita controllerAttivita){
+       return null;
+   }
 
     /**
      * Metodo che permette al cliente di selezionare
@@ -30,7 +45,9 @@ public interface IClienteAttività {
      *                           selezionata
      * @param attivita attivit&agrave; da selezionare
      */
-    Attivita selezionaAttivita(IControllerClienteAttivita controllerAttivita, Attivita attivita);
+    public Attivita selezionaAttivita(IControllerClienteAttivita controllerAttivita, Attivita attivita){
+        return null;
+    }
 
     /**
      * Metodo che permette al cliente di prenotare
@@ -43,7 +60,9 @@ public interface IClienteAttività {
      * @return true se l'attivit&agrave; risulta prenotata,
      * false altrimenti
      */
-    boolean prenotaAttivita(IControllerClienteAttivita controllerAttivita, Attivita attivita);
+   public boolean prenotaAttivita(IControllerClienteAttivita controllerAttivita, Attivita attivita){
+        return false;
+    }
 
     /**
      * Metodo che ritorna tutte le attivit&agrave;
@@ -51,7 +70,9 @@ public interface IClienteAttività {
      *
      * @return lista delle attivit&agrave; prenotate
      */
-    List<Attivita> getAttivitaPrenotate();
+   public List<Attivita> getAttivitaPrenotate(){
+        return null;
+    }
 
     /**
      * Metodo che permette di selezionare un'attivit&agrave;
@@ -61,7 +82,9 @@ public interface IClienteAttività {
      *                 dal cliente
      * @return l'attivit&agrave; selezionata
      */
-    Attivita selezionaAttivitaPrenotata(Attivita attivita);
+    public Attivita selezionaAttivitaPrenotata(Attivita attivita){
+        return null;
+    }
 
     /**
      * Metodo che permette di eliminare un'attivit&agrave;
@@ -72,5 +95,7 @@ public interface IClienteAttività {
      *                           selezionata
      * @param attivita attivit&agrave; prenotata da eliminare
      */
-    void eliminaAttivitaPrenotata(IControllerClienteAttivita controllerAttivita, Attivita attivita);
+    public void eliminaAttivitaPrenotata(IControllerClienteAttivita controllerAttivita, Attivita attivita){
+
+    }
 }

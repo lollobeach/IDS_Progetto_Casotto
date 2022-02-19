@@ -1,6 +1,6 @@
 package it.unicam.cs.ids_progetto_casotto.model;
 
-public abstract class Persona implements IUtente{
+public abstract class Persona {
 
     private int id;
     private final String nome;
@@ -18,7 +18,7 @@ public abstract class Persona implements IUtente{
         this.email = email;
     }
 
-    @Override
+  /*  @Override
     public int getId() {
         return this.id;
     }
@@ -55,4 +55,6 @@ public abstract class Persona implements IUtente{
     public void setEmail(String newEmail) {
         this.email = newEmail;
     }
+
+   */
 }

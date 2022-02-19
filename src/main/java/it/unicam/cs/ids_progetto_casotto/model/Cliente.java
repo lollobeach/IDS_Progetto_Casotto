@@ -15,7 +15,7 @@ import java.util.*;
  * generico cliente che utilizzer&agrave;
  * il sistema
  */
-public class Cliente extends Persona implements IClienteUtenza, IClienteAttivit√† {
+public class Cliente extends Persona {
 
     private final List<PrenotazioneUtenza> utenzePrenotate;
     private final List<PrenotazioneAttivita> attivitaPrenotate;
@@ -35,7 +35,7 @@ public class Cliente extends Persona implements IClienteUtenza, IClienteAttivit√
      *
      * @return lista messaggi ricevuti
      */
-    public List<Messaggio> getListaMessaggi() {
+  /*  public List<Messaggio> getListaMessaggi() {
         return this.listaMessaggi;
     }
 
@@ -103,4 +103,6 @@ public class Cliente extends Persona implements IClienteUtenza, IClienteAttivit√
     public void eliminaAttivitaPrenotata(IControllerClienteAttivita controllerAttivita, Attivita attivita) {
 
     }
+
+   */
 }

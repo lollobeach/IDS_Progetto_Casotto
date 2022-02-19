@@ -1,16 +1,27 @@
 package it.unicam.cs.ids_progetto_casotto.model.attivita;
 
 import it.unicam.cs.ids_progetto_casotto.controller.controller_attivita.PrenotazioneAttivitaCliente;
+import it.unicam.cs.ids_progetto_casotto.controller.controller_utenza.PrenotazioneUtenzaCliente;
 import it.unicam.cs.ids_progetto_casotto.model.Receptionist;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Interfaccia che definsice le azioni,
  * eseguibili dal {@link Receptionist}, per gestire
  * le attivit&agrave; prenotate dal cliente
  */
-public interface IHandlerPrenotazioniAttivitaClienti {
+public class IHandlerPrenotazioniAttivitaClienti {
+
+    private final List<PrenotazioneUtenzaCliente> prenotazioniUtenzaClienti;
+    private final List<PrenotazioneAttivitaCliente> prenotazioniAttivitaClienti;
+
+    public IHandlerPrenotazioniAttivitaClienti(List<PrenotazioneUtenzaCliente> prenotazioniUtenzaClienti, List<PrenotazioneAttivitaCliente> prenotazioniAttivitaClienti) {
+        this.prenotazioniUtenzaClienti =new ArrayList<>();
+        this.prenotazioniAttivitaClienti = new ArrayList<>();
+    }
 
     /**
      * Metodo che ritora la lista delle
@@ -19,7 +30,9 @@ public interface IHandlerPrenotazioniAttivitaClienti {
      *
      * @return lista delle prenotazioni effettuate
      */
-    List<PrenotazioneAttivitaCliente> getPrenotazioniAttivitaClienti();
+    public List<PrenotazioneAttivitaCliente> getPrenotazioniAttivitaClienti(){
+        return this.prenotazioniAttivitaClienti;
+    }
 
     /**
      * Metodo che ritora le prenotazioni effettuate
@@ -31,7 +44,10 @@ public interface IHandlerPrenotazioniAttivitaClienti {
      * @return lista delle prenotazioni effettuate dal
      * cliente effettuato
      */
-    List<PrenotazioneAttivitaCliente> getPrenotazioniAttivitaCliente(int idCliente);
+   public List<PrenotazioneAttivitaCliente> getPrenotazioniAttivitaCliente(int idCliente){
+       return this.getPrenotazioniAttivitaClienti().stream()
+               .filter(x -> x.getIdCliente() == idCliente).collect(Collectors.toList());
+   }
 
     /**
      * Metodo che permette di aggiungere una
@@ -43,7 +59,13 @@ public interface IHandlerPrenotazioniAttivitaClienti {
      * @return true se viene aggiunta correttamente,
      * false altrimenti
      */
-    boolean aggiungiPrenotazioneAttivita(PrenotazioneAttivitaCliente prenotazione);
+    public boolean aggiungiPrenotazioneAttivita(PrenotazioneAttivitaCliente prenotazione){
+        if (this.getPrenotazioniAttivitaClienti().contains(prenotazione)) {
+            return false;
+        }
+        this.getPrenotazioniAttivitaClienti().add(prenotazione);
+        return true;
+    }
 
     /**
      * Metodo che permette di eliminare una
@@ -55,5 +77,11 @@ public interface IHandlerPrenotazioniAttivitaClienti {
      * @return true se la rimozione prevede il rimborso,
      * false altrimenti
      */
-    boolean eliminaPrenotazioneAttivita(PrenotazioneAttivitaCliente prenotazione);
+   public boolean eliminaPrenotazioneAttivita(PrenotazioneAttivitaCliente prenotazione){
+       if (!this.getPrenotazioniAttivitaClienti().contains(prenotazione)) {
+           return false;
+       }
+       this.getPrenotazioniAttivitaClienti().remove(prenotazione);
+       return true;
+   }
 }

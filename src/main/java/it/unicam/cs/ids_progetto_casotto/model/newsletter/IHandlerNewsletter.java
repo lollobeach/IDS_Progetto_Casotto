@@ -1,11 +1,14 @@
 package it.unicam.cs.ids_progetto_casotto.model.newsletter;
 
+import it.unicam.cs.ids_progetto_casotto.controller.controller_attivita.PrenotazioneAttivitaCliente;
 import it.unicam.cs.ids_progetto_casotto.controller.controller_notifiche.IControllerNotificheClienti;
 import it.unicam.cs.ids_progetto_casotto.controller.controller_notifiche.ControllerNotifiche;
+import it.unicam.cs.ids_progetto_casotto.controller.controller_utenza.PrenotazioneUtenzaCliente;
 import it.unicam.cs.ids_progetto_casotto.model.Cliente;
 import it.unicam.cs.ids_progetto_casotto.model.Receptionist;
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Attivita;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +17,15 @@ import java.util.List;
  * gestire il {@link ControllerNotifiche}
  */
 //TODO da sistemare la gestione dei messaggi
-public interface IHandlerNewsletter {
+public class IHandlerNewsletter {
+
+    private final List<PrenotazioneUtenzaCliente> prenotazioniUtenzaClienti;
+    private final List<PrenotazioneAttivitaCliente> prenotazioniAttivitaClienti;
+
+    public IHandlerNewsletter(List<PrenotazioneUtenzaCliente> prenotazioniUtenzaClienti, List<PrenotazioneAttivitaCliente> prenotazioniAttivitaClienti) {
+        this.prenotazioniUtenzaClienti = new ArrayList<>();
+        this.prenotazioniAttivitaClienti = new ArrayList<>();
+    }
 
     /**
      * Metodo che permette al
@@ -29,7 +40,9 @@ public interface IHandlerNewsletter {
      * @return true se il messaggio risulta consegnato correttamente,
      * false altrimenti
      */
-    boolean notificaCliente(IControllerNotificheClienti newsletter, String oggetto, String body);
+   public boolean notificaCliente(IControllerNotificheClienti newsletter, String oggetto, String body){
+       return false;
+   }
 
     /**
      * Metodo che permette al
@@ -43,5 +56,7 @@ public interface IHandlerNewsletter {
      * @return true se il messaggio viene inviato
      * correttamente, false altrimenti
      */
-    boolean notificaAttivita(IControllerNotificheClienti newsletter, Attivita attivita);
+    public boolean notificaAttivita(IControllerNotificheClienti newsletter, Attivita attivita){
+        return false;
+    }
 }

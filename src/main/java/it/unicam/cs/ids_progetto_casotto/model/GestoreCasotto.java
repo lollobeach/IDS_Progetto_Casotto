@@ -16,13 +16,13 @@ import java.util.List;
  * tramite {@link it.unicam.cs.ids_progetto_casotto.controller.controller_attivita.ControllerAttivita},
  * e le utenze, tramite {@link it.unicam.cs.ids_progetto_casotto.controller.controller_utenza.ControllerSpiaggia}
  */
-public class GestoreCasotto extends Persona implements IHandlerAttivita, IHandlerUtenze {
+public class GestoreCasotto extends Persona  {
 
     public GestoreCasotto(int id, String nome, String cognome, String annoNascita, char sesso, String email) {
         super(id, nome, cognome, annoNascita, sesso, email);
     }
 
-    @Override
+  /*  @Override
     public boolean aggiungiAttivita(IControllerGestoreAttivita controllerGestoreAttivita, String nome, String descrizione, int numeroMassimoPosti, String dataSvolgimento, double prezzo) {
         return controllerGestoreAttivita.aggiungiAttivita(new Attivita(nome,descrizione,numeroMassimoPosti,dataSvolgimento,prezzo));
     }
@@ -51,4 +51,6 @@ public class GestoreCasotto extends Persona implements IHandlerAttivita, IHandle
     public List<Utenza> getUtenze(IControllerGestoreSpiaggia controllerSpiaggia) {
         return controllerSpiaggia.getUtenze();
     }
+
+   */
 }

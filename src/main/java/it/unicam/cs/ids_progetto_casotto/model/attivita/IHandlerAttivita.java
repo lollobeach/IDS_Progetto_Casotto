@@ -8,7 +8,8 @@ import it.unicam.cs.ids_progetto_casotto.model.newsletter.IHandlerNewsletter;
  * eseguibili dal {@link it.unicam.cs.ids_progetto_casotto.model.GestoreCasotto},
  * per gestire le attivit&agrave;
  */
-public interface IHandlerAttivita {
+public class IHandlerAttivita {
+
 
     /**
      * Metodo che permette al gestore
@@ -28,7 +29,9 @@ public interface IHandlerAttivita {
      * @return true se l'attivit&agrave; risulta aggiunta correttamente,
      * false altrimenti
      */
-    boolean aggiungiAttivita(IControllerGestoreAttivita controllerGestoreAttivita, String nome, String descrizione, int numeroMassimoPosti, String dataSvolgimento, double prezzo);
+   public boolean aggiungiAttivita(IControllerGestoreAttivita controllerGestoreAttivita, String nome, String descrizione, int numeroMassimoPosti, String dataSvolgimento, double prezzo){
+       return controllerGestoreAttivita.aggiungiAttivita(new Attivita(nome,descrizione,numeroMassimoPosti,dataSvolgimento,prezzo));
+    }
 
     /**
      * Metodo che permette al gestore
@@ -42,7 +45,9 @@ public interface IHandlerAttivita {
      * @return true se l'attivit&agrave; risulta eliminate correttamente,
      * false altrimenti
      */
-    boolean eliminaAttivita(IControllerGestoreAttivita controllerGestoreAttivita, Attivita attivita);
+   public boolean eliminaAttivita(IControllerGestoreAttivita controllerGestoreAttivita, Attivita attivita){
+       return controllerGestoreAttivita.eliminaAttivita(attivita);
+   }
 
     /**
      * Metodo che permette al gestore
@@ -59,5 +64,7 @@ public interface IHandlerAttivita {
      * @return true se l'attivit&agrave; risulta rimandata correttamente,
      * false altrimenti
      */
-    boolean rimandaAttivita(IControllerGestoreAttivita controllerGestoreAttivita, IHandlerNewsletter receptionist, Attivita attivita, String nuovaData);
+   public boolean rimandaAttivita(IControllerGestoreAttivita controllerGestoreAttivita, IHandlerNewsletter receptionist, Attivita attivita, String nuovaData){
+       return controllerGestoreAttivita.rimandaAttivita(receptionist,attivita,nuovaData);
+   }
 }

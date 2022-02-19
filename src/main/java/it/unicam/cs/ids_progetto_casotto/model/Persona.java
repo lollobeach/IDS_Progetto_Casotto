@@ -1,12 +1,19 @@
 package it.unicam.cs.ids_progetto_casotto.model;
 
-public abstract class Persona {
 
+
+    @Column
+    @Id
     private int id;
+    @Column
     private final String nome;
+    @Column
     private final String cognome;
+    @Column
     private final String annoNascita;
+    @Column
     private final char sesso;
+    @Column
     private String email;
 
     public Persona(int id, String nome, String cognome, String annoNascita, char sesso, String email) {

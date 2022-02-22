@@ -6,19 +6,36 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class PrenotazioneAttivitaCliente {
 
 
-    private final int idCliente;
-    private final Attivita attivitaPrenotata;
-    private final String orarioPrenotazione;
+    private  int idCliente;
+    private Integer idPrenotazione;
+    private  Attivita attivitaPrenotata;
+    private  LocalDateTime orarioPrenotazione;
 
-    public PrenotazioneAttivitaCliente(int idCliente, Attivita attivitaPrenotata, String orarioPrenotazione) {
+
+    public PrenotazioneAttivitaCliente() {
+    }
+
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public void setIdPrenotazione(Integer idPrenotazione) {
+        this.idPrenotazione = idPrenotazione;
+    }
+
+    public void setAttivitaPrenotata(Attivita attivitaPrenotata) {
         this.attivitaPrenotata = attivitaPrenotata;
-        this.orarioPrenotazione = orarioPrenotazione;
+    }
+
+    public void setOrarioPrenotazione() {
+        LocalDateTime now = LocalDateTime.now();
+        this.orarioPrenotazione = now;
     }
 
     /**
@@ -49,8 +66,8 @@ public class PrenotazioneAttivitaCliente {
      *
      * @return orario prenotazione
      */
-    public LocalDate getOrarioPrenotazione() {
-        return LocalDate.parse(this.orarioPrenotazione);
+    public LocalDateTime getOrarioPrenotazione() {
+        return this.orarioPrenotazione;
     }
 
     @Override

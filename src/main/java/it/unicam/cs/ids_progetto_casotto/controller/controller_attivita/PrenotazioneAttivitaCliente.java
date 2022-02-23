@@ -1,15 +1,13 @@
 package it.unicam.cs.ids_progetto_casotto.controller.controller_attivita;
 
-import it.unicam.cs.ids_progetto_casotto.model.attivita.Attivita;
+import it.unicam.cs.ids_progetto_casotto.model.attivita.Event;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
 public class PrenotazioneAttivitaCliente {
+
 
 
     private  int idCliente;
@@ -22,6 +20,7 @@ public class PrenotazioneAttivitaCliente {
     }
 
     public void setIdCliente(int idCliente) {
+
         this.idCliente = idCliente;
     }
 
@@ -55,7 +54,7 @@ public class PrenotazioneAttivitaCliente {
      *
      * @return attivit&agrave; prenotata
      */
-    public Attivita getAttivitaPrenotata() {
+    public Event getAttivitaPrenotata() {
         return attivitaPrenotata;
     }
 

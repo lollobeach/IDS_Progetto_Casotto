@@ -3,19 +3,38 @@ package it.unicam.cs.ids_progetto_casotto.controller.controller_attivita;
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Event;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class PrenotazioneAttivitaCliente {
 
 
-    private final int idCliente;
-    private final Event attivitaPrenotata;
-    private final String orarioPrenotazione;
 
-    public PrenotazioneAttivitaCliente(int idCliente, Event attivitaPrenotata, String orarioPrenotazione) {
+    private  int idCliente;
+    private Integer idPrenotazione;
+    private  Attivita attivitaPrenotata;
+    private  LocalDateTime orarioPrenotazione;
+
+
+    public PrenotazioneAttivitaCliente() {
+    }
+
+    public void setIdCliente(int idCliente) {
+
         this.idCliente = idCliente;
+    }
+
+    public void setIdPrenotazione(Integer idPrenotazione) {
+        this.idPrenotazione = idPrenotazione;
+    }
+
+    public void setAttivitaPrenotata(Attivita attivitaPrenotata) {
         this.attivitaPrenotata = attivitaPrenotata;
-        this.orarioPrenotazione = orarioPrenotazione;
+    }
+
+    public void setOrarioPrenotazione() {
+        LocalDateTime now = LocalDateTime.now();
+        this.orarioPrenotazione = now;
     }
 
     /**
@@ -46,8 +65,8 @@ public class PrenotazioneAttivitaCliente {
      *
      * @return orario prenotazione
      */
-    public LocalDate getOrarioPrenotazione() {
-        return LocalDate.parse(this.orarioPrenotazione);
+    public LocalDateTime getOrarioPrenotazione() {
+        return this.orarioPrenotazione;
     }
 
     @Override

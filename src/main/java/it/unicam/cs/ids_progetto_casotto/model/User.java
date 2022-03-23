@@ -1,9 +1,11 @@
 package it.unicam.cs.ids_progetto_casotto.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.unicam.cs.ids_progetto_casotto.model.IUtente;
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Prenotazione;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.PrenotazioneUtenza;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,9 +16,10 @@ import java.util.Set;
  * il sistema
  */
 @Entity
+@Getter
+@Setter
 @Table(name = "user")
-@JsonIgnoreProperties(value = {"prenotazioni"})
-public class User implements IUtente{
+public class User implements IUtente {
 
     @Column
     @Id
@@ -35,9 +38,13 @@ public class User implements IUtente{
     @Column
     private String email;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(targetEntity = Prenotazione.class, mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Prenotazione> prenotazioni;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Prenotazione> prenotazioneAttivita;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<PrenotazioneUtenza> prenotazioneUtenzaSet;
 
     public User(){
 
@@ -83,7 +90,4 @@ public class User implements IUtente{
     public void setEmail(String newEmail) {
         this.email = newEmail;
     }
-
-
-
 }

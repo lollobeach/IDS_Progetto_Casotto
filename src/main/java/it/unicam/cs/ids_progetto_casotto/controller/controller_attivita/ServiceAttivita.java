@@ -10,15 +10,10 @@ import java.util.Optional;
 @Service
 public class ServiceAttivita {
 
+    private final RepositoryAttivita repositoryAttivita;
 
-    private RepositoryAttivita repositoryAttivita;
-
-    private RepositoryUtente repositoryUtente;
-
-    public ServiceAttivita(RepositoryAttivita repositoryAttivita, RepositoryUtente repositoryUtente) {
+    public ServiceAttivita(RepositoryAttivita repositoryAttivita) {
         this.repositoryAttivita = repositoryAttivita;
-        //this.repositoryPrenotazioneAttivita = repositoryPrenotazioneAttivita;
-        this.repositoryUtente=repositoryUtente;
     }
 
     public List<Event> getAll() {

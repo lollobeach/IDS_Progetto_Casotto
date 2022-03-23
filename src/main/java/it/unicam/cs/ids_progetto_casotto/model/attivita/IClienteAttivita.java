@@ -8,7 +8,7 @@ import java.util.List;
  * Interfaccia che permette al cliente di gestire le
  * varie attivit&agrave; proposte dal casotto
  */
-public interface IClienteAttività {
+public interface IClienteAttivita {
 
     /**
      * Metodo che permette al cliente di visualizzare

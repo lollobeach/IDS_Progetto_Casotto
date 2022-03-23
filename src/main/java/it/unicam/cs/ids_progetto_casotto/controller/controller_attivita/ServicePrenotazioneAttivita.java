@@ -1,43 +1,58 @@
 package it.unicam.cs.ids_progetto_casotto.controller.controller_attivita;
 
-import it.unicam.cs.ids_progetto_casotto.model.attivita.Attivita;
+import it.unicam.cs.ids_progetto_casotto.controller.controller_utente.RepositoryUtente;
+import it.unicam.cs.ids_progetto_casotto.model.User;
+import it.unicam.cs.ids_progetto_casotto.model.attivita.Event;
+import it.unicam.cs.ids_progetto_casotto.model.attivita.Prenotazione;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ServicePrenotazioneAttivita {
 
-    private RepositoryPrenotazioneAttivita repositoryPrenotazioneAttivita;
-    private RepositoryAttivita repositoryAttivita;
+    private final RepositoryPrenotazione repositoryPrenotazione;
+    private final RepositoryAttivita repositoryEvent;
+    private final RepositoryUtente repositoryUser;
 
-    public ServicePrenotazioneAttivita(RepositoryPrenotazioneAttivita repositoryPrenotazioneAttivita, RepositoryAttivita repositoryAttivita){
-        this.repositoryPrenotazioneAttivita= repositoryPrenotazioneAttivita;
-        this.repositoryAttivita= repositoryAttivita;
-
+    public ServicePrenotazioneAttivita(RepositoryPrenotazione repositoryPrenotazione, RepositoryAttivita repositoryAttivita, RepositoryUtente repositoryUser){
+        this.repositoryPrenotazione = repositoryPrenotazione;
+        this.repositoryEvent = repositoryAttivita;
+        this.repositoryUser = repositoryUser;
     }
 
-    public Optional<PrenotazioneAttivitaCliente> creaPrenotazioneAttivita(Integer idCliente, Integer id) {
-
-        Optional<Attivita> attivitaSelezionata = this.repositoryAttivita.findById(id);
-        PrenotazioneAttivitaCliente nuovaPrenotazione = new PrenotazioneAttivitaCliente();
-        nuovaPrenotazione.setAttivitaPrenotata(attivitaSelezionata.get());
-        nuovaPrenotazione.setIdCliente(idCliente);
-        nuovaPrenotazione.setOrarioPrenotazione();
-        nuovaPrenotazione.setIdPrenotazione(id);
-
-
-        return Optional.of(this.repositoryPrenotazioneAttivita.save(nuovaPrenotazione));
-
+    public List<Prenotazione> getAll(){
+        return this.repositoryPrenotazione.findAll();
     }
 
-    public Optional<PrenotazioneAttivitaCliente> eliminaPrenotazioneAttivitaCliente(Integer idPrenotazione) {
-     Optional <PrenotazioneAttivitaCliente> toDelete = this.repositoryPrenotazioneAttivita.findById(idPrenotazione);
-        if(toDelete.isEmpty()){
+    public Optional<Prenotazione> creaPrenotazioneAttivita(Integer idUser, Integer idAttivita) {
+        Optional<User> user = this.repositoryUser.findById(idUser);
+        if (user.isEmpty()) { return Optional.empty(); }
+        Optional<Event> event = this.repositoryEvent.findById(idAttivita);
+        if(event.isEmpty()){
             return Optional.empty();
         }
-        this.repositoryPrenotazioneAttivita.deleteById(idPrenotazione);
-       return toDelete;
+        Prenotazione prenotazione = new Prenotazione();
+        prenotazione.setId(1);
+        prenotazione.setAttivita(event.get());
+        prenotazione.setUser(user.get());
+        return Optional.of(this.repositoryPrenotazione.save(prenotazione));
+    }
 
+    public Optional<Prenotazione> deletePrenotazione(Integer id) {
+        Optional<Prenotazione> deleted = this.repositoryPrenotazione.findById(id);
+        if (deleted.isEmpty()) { return Optional.empty(); }
+        Event evento = deleted.get().getAttivita();
+        if (evento.getNumeroMassimoPosti() != null) {
+            evento.aumentaNumeroPostiDisponibili();
+        }
+        evento.getPrenotazioni().remove(deleted.get());
+        User user = deleted.get().getUser();
+        user.getPrenotazioneAttivita().remove(deleted.get());
+        deleted.get().setUser(null);
+        deleted.get().setAttivita(null);
+        this.repositoryPrenotazione.deleteById(id);
+        return deleted;
     }
 }

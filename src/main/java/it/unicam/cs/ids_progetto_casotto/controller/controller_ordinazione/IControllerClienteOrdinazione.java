@@ -5,6 +5,7 @@ import it.unicam.cs.ids_progetto_casotto.model.ordinazione.Comanda;
 import it.unicam.cs.ids_progetto_casotto.model.ordinazione.Consumazione;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Interfaccia rappresentante le azioni che pu&ograve; eseguire {@link User} per la comunicazione con
@@ -23,10 +24,8 @@ public interface IControllerClienteOrdinazione {
      * Metodo che permette la creazione di una {@link Comanda} all'interno del {@link ControllerOrdinazione}
      *
      * @param consumazioni la lista delle consumazioni selezionate
-     * @oaram idUtenze l'identificativo dell'utenza alla quale portare la comanda
+     * @param idUtenza l'identificativo dell'utenza alla quale portare la comanda
      * @return true se avviene la creazione e aggiunta della comanda
      */
-    //Comanda creaComanda(List<Consumazione> consumazioni, int idUtenza);
-    Comanda creaComanda(List<Consumazione> consumazioni);
-
+    Comanda creaComanda(Set<Consumazione> consumazioni, Integer idUtenza);
 }

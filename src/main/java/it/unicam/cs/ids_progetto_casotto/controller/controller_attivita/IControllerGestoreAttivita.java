@@ -16,8 +16,7 @@ public interface IControllerGestoreAttivita {
      *
      * @param attivita attivit&agrave; da
      *                 aggiungere
-     * @return true se l'attivti&agrave; risulta
-     * aggiunta correttamente, false altrimenti
+     * @return l'attivit&agrave; aggiunta
      */
     Event aggiungiAttivita(Event attivita);
 
@@ -26,8 +25,8 @@ public interface IControllerGestoreAttivita {
      * attivit&agrave; nel sistema
      *
      * @param id da eliminare
-     * @return true se l'attivit&agrave; risulta
-     * eliminata correttamente, false altrimenti
+     *
+     * @return l'attivit&agrave; eliminata
      */
     Event eliminaAttivita(Integer id);
 
@@ -40,8 +39,9 @@ public interface IControllerGestoreAttivita {
      *                     della modifica della data di svolgimento
      * @param id attivit&agrave; da rimandare
      * @param nuovaData nuova data di svolgimento
+     *
      * @return true se l'attivit&agrave; risulta spostata correttamente,
      * false altrimenti
      */
-   Event rimandaAttivita(IHandlerNewsletter receptionist, Integer id, Event nuovaData);
+    Event rimandaAttivita(IHandlerNewsletter receptionist, Integer id, Event nuovaData);
 }

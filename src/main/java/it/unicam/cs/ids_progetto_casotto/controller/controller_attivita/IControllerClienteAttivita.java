@@ -1,7 +1,7 @@
 package it.unicam.cs.ids_progetto_casotto.controller.controller_attivita;
 
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Event;
-import it.unicam.cs.ids_progetto_casotto.model.attivita.IHandlerPrenotazioniAttivitaClienti;
+import it.unicam.cs.ids_progetto_casotto.model.attivita.Prenotazione;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public interface IControllerClienteAttivita {
      * posti disponibili per un'attivit&agrave;
      * in particolare
      *
-     * @param attivita di cui si vuole sapere
+     * @param id dell'attivita di cui si vuole sapere
      *                 il numero di posti
      *                 disponibili
      * @return numero di posti disponibili per
@@ -43,30 +43,16 @@ public interface IControllerClienteAttivita {
 
     /**
      * Metodo che permette al cliente
-     * di prenotare un'attivit&agrave; e
-     * di avvisare il receptionist di tale
-     * prenotazione
+     * di prenotare un'attivit&agrave;
      *
-     * @param receptionist a cui inviare la prenotazione
-     *                     effettuata dal cliente
-     * @param idCliente id del cliente che si &egrave; prenotato
-     * @param id attivit&agrave; che il cliente ha prenotato
-     * @return true se la prenotazione avviene con successo, false altrimenti
+     * @param idUser id dell'user che vuole
+     *               prenotare
+     * @param idAttivita id dell'attivit&agrave; che si vuole
+     *                   prenotare
+     *
+     * @return la prenotazione creata
      */
-    PrenotazioneAttivitaCliente creaPrenotazioneAttivitaCliente(IHandlerPrenotazioniAttivitaClienti receptionist, int idCliente, Integer id);
+    Prenotazione creaPrenotazioneAttivitaCliente(Integer idUser, Integer idAttivita);
 
-    /**
-     * Metodo che permette al cliente
-     * di eliminare una prenotazione di un'
-     * attivit&agrave; da lui effettuata e
-     * di avvisare il receptionist dell'eliminazione
-     * di tale attivit&agrave;
-     *
-     * @param receptionist da avvisare dell'eventuale
-     *                     cancellazione della prenotazione
-     * @param prenotazione da rimuovere
-     * @return true se la rimozione prevede il rimborso, false altrimenti
-     */
-    PrenotazioneAttivitaCliente eliminaPrenotazioneAttivitaCliente(IHandlerPrenotazioniAttivitaClienti receptionist, Integer id);
 
 }

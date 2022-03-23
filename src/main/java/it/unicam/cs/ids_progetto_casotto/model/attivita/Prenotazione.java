@@ -3,14 +3,11 @@ package it.unicam.cs.ids_progetto_casotto.model.attivita;
 
 import it.unicam.cs.ids_progetto_casotto.controller.controller_attivita.ControllerAttivita;
 import it.unicam.cs.ids_progetto_casotto.model.User;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.Utenza;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Classe che rappresenta una prenotazione
@@ -29,17 +26,18 @@ public class Prenotazione {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne(optional = false,
+            targetEntity = User.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private User user;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(targetEntity = Event.class, cascade = CascadeType.ALL)
-    private Set<Event> eventiPrenotatiList;
+    @ManyToOne(targetEntity = Utenza.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "utenza_id", referencedColumnName = "id")
+    private Event attivita;
 
     public Prenotazione() {
-        eventiPrenotatiList = new HashSet<>();
     }
-
 
 }

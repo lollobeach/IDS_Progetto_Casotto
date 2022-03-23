@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Classe che implementa un controller per le ordinazioni. Si possono effettuare varie operazioni tutte ineresnti alla
@@ -55,17 +56,15 @@ public class ControllerOrdinazione implements IControllerStaffOrdinazione, ICont
     public Consumazione updateConsumazione(@PathVariable("id")Integer id, @RequestBody Consumazione consumazione){
         Optional<Consumazione> got = this.serviceConsumazioni.getOne(id);
         if (got.isEmpty())
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         Optional<Consumazione> updated = this.serviceConsumazioni.updateConsumazione(id, consumazione);
         return this.getConsumazioneOrThrownException(updated, HttpStatus.BAD_REQUEST);
     }
 
     @Override
-    @PostMapping("/ordina")
-    //public Comanda creaComanda(@RequestBody List<Consumazione> consumazioni, int idUtenza) {
-    public Comanda creaComanda(@RequestBody List<Consumazione> consumazioni){
-        //return this.serviceOrdinazioni.ordinaConsumazioni(consumazioni, idUtenza).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST))
-        return this.serviceOrdinazioni.ordinaConsumazioni(consumazioni).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+    @PostMapping("/ordina/{id}")
+    public Comanda creaComanda(@RequestBody Set<Consumazione> consumazioni,@PathVariable("id") Integer idUtenza) {
+        return this.serviceOrdinazioni.ordinaConsumazioni(consumazioni, idUtenza).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
     }
 
 
@@ -91,7 +90,6 @@ public class ControllerOrdinazione implements IControllerStaffOrdinazione, ICont
         return this.serviceOrdinazioni.getStatus(id);
     }
 
-    //TODO sistemare problema del non modifica stato
     @Override
     @PutMapping("/ordinazione{id}/setstato")
     public StatoComanda setStatoComanda(@PathVariable Integer id,@RequestBody StatoComanda nuovoStato) {
@@ -99,7 +97,6 @@ public class ControllerOrdinazione implements IControllerStaffOrdinazione, ICont
         if(got.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         return this.serviceOrdinazioni.setStatus(id, nuovoStato);
-        //return this.getStatoConsumazioneOrThrownExcpetion(updated, HttpStatus.BAD_REQUEST);
     }
 
     private Consumazione getConsumazioneOrThrownException(Optional<Consumazione> consumazione, HttpStatus status) {

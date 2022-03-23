@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class Messaggio {
 
-     private final IHandlerNewsletter mittente;
-     private final List<User> destinatario;
-     private final Oggetto oggetto;
-     private final String body;
+    private final IHandlerNewsletter mittente;
+    private final List<User> destinatario;
+    private final Oggetto oggetto;
+    private final String body;
 
     public Messaggio(IHandlerNewsletter mittente, List<User> destinatario, Oggetto oggetto, String body) {
         this.mittente = mittente;

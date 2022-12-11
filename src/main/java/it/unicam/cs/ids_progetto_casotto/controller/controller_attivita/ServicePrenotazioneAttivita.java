@@ -1,13 +1,16 @@
 package it.unicam.cs.ids_progetto_casotto.controller.controller_attivita;
 
 import it.unicam.cs.ids_progetto_casotto.controller.controller_utente.RepositoryUtente;
+import it.unicam.cs.ids_progetto_casotto.controller.controller_utenza.RepositoryPrenotazioneUtenza;
 import it.unicam.cs.ids_progetto_casotto.model.User;
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Event;
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Prenotazione;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.PrenotazioneUtenza;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ServicePrenotazioneAttivita {
@@ -33,10 +36,15 @@ public class ServicePrenotazioneAttivita {
         if(event.isEmpty()){
             return Optional.empty();
         }
+        //Set<PrenotazioneUtenza> prenotazioniUtenze = user.get().getPrenotazioneUtenzaSet();
         Prenotazione prenotazione = new Prenotazione();
         prenotazione.setId(1);
         prenotazione.setAttivita(event.get());
         prenotazione.setUser(user.get());
+        //user.get().getPrenotazioneAttivita().add(prenotazione);
+        //this.repositoryUser.save(user.get());
+        //event.get().getPrenotazioni().add(prenotazione);
+        //this.repositoryEvent.save(event.get());
         return Optional.of(this.repositoryPrenotazione.save(prenotazione));
     }
 

@@ -6,8 +6,14 @@ import it.unicam.cs.ids_progetto_casotto.model.User;
 import it.unicam.cs.ids_progetto_casotto.model.utenza.Utenza;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe che rappresenta una prenotazione
@@ -37,7 +43,32 @@ public class Prenotazione {
     @JoinColumn(name = "utenza_id", referencedColumnName = "id")
     private Event attivita;
 
+
+
+
     public Prenotazione() {
     }
+
+    /*public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Event getEventiPrenotatiList() {
+        return attivita;
+    }*/
+
+
 
 }

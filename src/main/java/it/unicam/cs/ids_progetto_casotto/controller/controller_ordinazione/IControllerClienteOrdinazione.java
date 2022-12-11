@@ -4,6 +4,7 @@ import it.unicam.cs.ids_progetto_casotto.model.User;
 import it.unicam.cs.ids_progetto_casotto.model.ordinazione.Comanda;
 import it.unicam.cs.ids_progetto_casotto.model.ordinazione.Consumazione;
 
+import javax.persistence.SecondaryTable;
 import java.util.List;
 import java.util.Set;
 

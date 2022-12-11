@@ -25,15 +25,15 @@ public class ControllerPeriodo {
 
     @GetMapping("/{giorno}")
     public List<PeriodoDisponibilita> getPeriodoByGiorno(@PathVariable("giorno")
-                                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                                                 LocalDate giorno) {
+                                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                                                               LocalDate giorno) {
         return this.getPeriodiOrThrownException(this.servicePeriodo.getPeriodoByDay(giorno), HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/giorno/{giorno}/orario/{orario}")
     public PeriodoDisponibilita getPeriodoByDayByOrario(@PathVariable("giorno")
                                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                                                LocalDate giorno, @PathVariable("orario")String orario) {
+                                                        LocalDate giorno, @PathVariable("orario")String orario) {
         return this.getPeriodoOrThrownException(this.servicePeriodo.getPeriodoByDayByOrario(giorno,orario),HttpStatus.NOT_FOUND);
     }
 

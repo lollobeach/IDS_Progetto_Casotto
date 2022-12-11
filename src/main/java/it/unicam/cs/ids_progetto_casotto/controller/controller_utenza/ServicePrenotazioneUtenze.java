@@ -2,12 +2,16 @@ package it.unicam.cs.ids_progetto_casotto.controller.controller_utenza;
 
 import it.unicam.cs.ids_progetto_casotto.controller.controller_utente.RepositoryUtente;
 import it.unicam.cs.ids_progetto_casotto.model.User;
-import it.unicam.cs.ids_progetto_casotto.model.utenza.*;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.PeriodoDisponibilita;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.PrenotazioneUtenza;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.Tariffa;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.Utenza;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ServicePrenotazioneUtenze {

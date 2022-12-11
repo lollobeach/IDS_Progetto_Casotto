@@ -1,13 +1,17 @@
 package it.unicam.cs.ids_progetto_casotto.model.ordinazione;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import it.unicam.cs.ids_progetto_casotto.controller.controller_ordinazione.ControllerOrdinazione;
 import it.unicam.cs.ids_progetto_casotto.model.utenza.Utenza;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**

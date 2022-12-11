@@ -33,7 +33,7 @@ public interface IControllerClienteAttivita {
      * posti disponibili per un'attivit&agrave;
      * in particolare
      *
-     * @param id dell'attivita di cui si vuole sapere
+     * @param attivita di cui si vuole sapere
      *                 il numero di posti
      *                 disponibili
      * @return numero di posti disponibili per
@@ -43,16 +43,14 @@ public interface IControllerClienteAttivita {
 
     /**
      * Metodo che permette al cliente
-     * di prenotare un'attivit&agrave;
+     * di prenotare un'attivit&agrave; e
+     * di avvisare il receptionist di tale
+     * prenotazione
      *
-     * @param idUser id dell'user che vuole
-     *               prenotare
-     * @param idAttivita id dell'attivit&agrave; che si vuole
-     *                   prenotare
      *
-     * @return la prenotazione creata
+     * @param prenotazione@return true se la prenotazione avviene con successo, false altrimenti
      */
-    Prenotazione creaPrenotazioneAttivitaCliente(Integer idUser, Integer idAttivita);
+    Prenotazione creaPrenotazioneAttivitaCliente(Prenotazione prenotazione);
 
 
 }

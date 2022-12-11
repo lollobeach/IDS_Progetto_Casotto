@@ -4,6 +4,8 @@ import it.unicam.cs.ids_progetto_casotto.controller.controller_utenza.Repository
 import it.unicam.cs.ids_progetto_casotto.model.ordinazione.Comanda;
 import it.unicam.cs.ids_progetto_casotto.model.ordinazione.Consumazione;
 import it.unicam.cs.ids_progetto_casotto.model.ordinazione.StatoComanda;
+import it.unicam.cs.ids_progetto_casotto.model.utenza.Utenza;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +24,7 @@ public class ServiceOrdinazioni {
     }
 
     Optional<Comanda> ordinaConsumazioni(Set<Consumazione> consumazioni, Integer idUtenza){
-        //public Optional<Comanda> ordinaConsumazioni(Set<Consumazione> consumazioni){
+    //public Optional<Comanda> ordinaConsumazioni(Set<Consumazione> consumazioni){
         if (consumazioni == null) { Optional.empty(); }
         if(this.repositoryUtenza.existsById(idUtenza))
             Optional.empty();

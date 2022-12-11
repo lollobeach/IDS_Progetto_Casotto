@@ -30,15 +30,15 @@ public class ControllerUtenza {
 
     @GetMapping("/giorno/{giorno}")
     public List<Utenza> getUtenzaByGiorno(@PathVariable("giorno")
-                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                                  LocalDate giorno) {
+                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                                           LocalDate giorno) {
         return this.getUtenzeOrThrownException(this.serviceUtenza.getUtenzeByGiorno(giorno), HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/giorno/{giorno}/orario/{orario}")
     public List<Utenza> getUtenzeByGiornoByOrario(@PathVariable("giorno")
-                                                  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                                          LocalDate giorno,
+                                                              @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                                                              LocalDate giorno,
                                                   @PathVariable("orario") String orario) {
         return this.getUtenzeOrThrownException(this.serviceUtenza.getUtenzeByGiornoByOrario(giorno,orario), HttpStatus.NOT_FOUND);
     }

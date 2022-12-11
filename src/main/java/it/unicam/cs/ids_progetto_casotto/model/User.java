@@ -1,11 +1,13 @@
 package it.unicam.cs.ids_progetto_casotto.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.unicam.cs.ids_progetto_casotto.model.IUtente;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.unicam.cs.ids_progetto_casotto.model.attivita.Prenotazione;
 import it.unicam.cs.ids_progetto_casotto.model.utenza.PrenotazioneUtenza;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -19,7 +21,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "user")
-public class User implements IUtente {
+public class User implements IUtente{
 
     @Column
     @Id
@@ -90,4 +92,7 @@ public class User implements IUtente {
     public void setEmail(String newEmail) {
         this.email = newEmail;
     }
+
+
+
 }

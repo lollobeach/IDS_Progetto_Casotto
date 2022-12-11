@@ -35,7 +35,7 @@ public class Event {
     @NonNull
     @Column(unique=true)
     private String nome;
-    ;
+;
     @Column
     private int postiDisponibili;
 
@@ -61,7 +61,7 @@ public class Event {
 
     public Integer getId(){
         return this.id;
-    }
+}
 
     /**
      * Metodo che ritorna
@@ -149,7 +149,7 @@ public class Event {
     public String toString() {
         return "Attivita{" +
                 "nome='" + nome + '\'' +
-                //  ", descrizione='" + descrizione + '\'' +
+              //  ", descrizione='" + descrizione + '\'' +
                 ", postiDisponibili=" + postiDisponibili +
                 ", numeroMassimoPosti=" + numeroMassimoPosti +
                 ", dataSvolgimento='" + dataSvolgimento + '\'' +

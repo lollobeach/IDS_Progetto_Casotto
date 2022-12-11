@@ -10,4 +10,6 @@ import java.util.List;
 public interface RepositoryUtenza extends JpaRepository<Utenza, Integer> {
 
     List<Utenza> findUtenzasByPeriodiId(Integer id);
+
+
 }

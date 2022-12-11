@@ -34,7 +34,7 @@ public class ServicePeriodo {
             return Optional.empty();
         }
         if (!periodoDisponibilita.getFasciaOraria().equals("mattino") && !periodoDisponibilita.getFasciaOraria().equals("pomeriggio")
-                && !periodoDisponibilita.getFasciaOraria().equals("giornata")) {
+        && !periodoDisponibilita.getFasciaOraria().equals("giornata")) {
             return Optional.empty();
         }
         return Optional.of(this.repositoryPeriodo.save(periodoDisponibilita));
